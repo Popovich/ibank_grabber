@@ -28,6 +28,7 @@ driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=None)
 driver.implicitly_wait(10) # seconds
 driver.get("https://online.binbank.ru")
 
+# логинимся #########################################
 login = driver.find_element_by_id("login")
 login.send_keys(user)
 
@@ -36,18 +37,23 @@ password.send_keys(pwd)
 
 with wait_for_page_load(driver):
     password.submit()
+######################################################
 
+# принтуем баланс
 balance = driver.find_element_by_xpath("//div[@id='topmenu']//span[@class='current']")
 print(balance.text)
 
+# переходим в "Карты и счета"
 accounts_link = driver.find_element_by_link_text('Карты и счета')
 with wait_for_page_load(driver):
     accounts_link.click()
 
+# переходим в выписку по карте
 account_history_link = driver.find_element_by_xpath("//div[@class='accounts-list']/div[@class='account-history']//a")
 with wait_for_page_load(driver):
     account_history_link.click()
 
+# задаём период для выписки
 period_start_field = driver.find_element_by_name("periodStartField")
 period_start_field.click() # !!!
 WebDriverWait(driver, 10).until(lambda driver: driver.find_element_by_xpath("//div[@id='ui-datepicker-div']"))
@@ -62,6 +68,7 @@ period_end_field.send_keys("31.03.2016")
 with wait_for_page_load(driver):
     period_end_field.submit()
 
+# парсим таблицу с транзакциями по карте
 rows = driver.find_elements_by_xpath("//div/div/div[@class='table-wrap']/table/tbody")
 for r in rows:
     tr = r.find_elements_by_tag_name('tr')
@@ -76,14 +83,16 @@ for r in rows:
         #Детали операции
         tds[2].text
 
-# история операций
+# теперь переходим в "Историю операций"
 payments_history = driver.find_element_by_link_text('История операций')
 with wait_for_page_load(driver):
     payments_history.click()
 
+# открываем настройки расширенного поиска
 extended_search = driver.find_element_by_xpath("//div[@id='wrapper']/div[@class='inner']/a")
 extended_search.click()
 
+# задаём период, за который хотим смотреть операции
 from_date = driver.find_element_by_name("fromDate")
 from_date.click() # !!!
 WebDriverWait(driver, 10).until(lambda driver: driver.find_element_by_xpath("//div[@id='ui-datepicker-div']"))
@@ -99,20 +108,22 @@ to_date.send_keys("31.03.2016")
 with wait_for_page_load(driver):
     to_date.submit()
 
+# парсим таблицу с операциями
 rows = driver.find_elements_by_xpath("//div[@class='table-wrap']/table/tbody/tr")
 for r in rows:
     tds = r.find_elements_by_tag_name('td')
     if tds:        
         # Операция
-        tds[0]
+        print("Операция: %s" % (tds[0],))
 
         # Состояние
-        tds[1].find_element_by_tag_name('a').get_attribute("title")
+        print("Состояние: %s" % (tds[1].find_element_by_tag_name('a').get_attribute("title"),))
 
-        #Сумма
-        tds[2]
+        # Сумма
+        print("Сумма: %s" % (tds[2],))
 
-        #Детали операции
-        tds[3]
+        # Детали операции
+        print("Детали: %s" % (tds[3],))
 
-driver.quit()
+# выходим
+#driver.quit()
