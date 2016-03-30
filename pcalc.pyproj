@@ -6,8 +6,7 @@
     <ProjectGuid>015cbb1b-ddbc-4dc7-ae74-cffc1cc009b0</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>run.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,13 +27,26 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="model\bank.py" />
-    <Compile Include="model\meta.py" />
-    <Compile Include="model\__init__.py" />
+    <Compile Include="config.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dbaas\endpoints.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dbaas\models.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dbaas\__init__.py" />
     <Compile Include="pcalc.py" />
+    <Compile Include="run.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="model\" />
+    <Folder Include="dbaas\" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
   <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
