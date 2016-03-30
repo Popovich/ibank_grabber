@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "p-calc", "p-calc.pyproj", "{015CBB1B-DDBC-4DC7-AE74-CFFC1CC009B0}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "pcalc", "pcalc.pyproj", "{015CBB1B-DDBC-4DC7-AE74-CFFC1CC009B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
