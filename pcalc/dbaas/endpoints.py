@@ -1,9 +1,12 @@
-﻿from .models import Bank, BankSchema, db
+﻿from dbaas.basemodel import db
+from dbaas.bank.model import Bank, BankSchema
+from dbaas.card.model import Card, CardSchema
+
 from flask_restful import Api, Resource
 from flask import request, jsonify
 
 schema = BankSchema()
-api = Api(prefix='/pcalc/dbaas/v1')
+rest_api = Api(prefix='/pcalc/dbaas/v1')
 
 class GetBank(Resource):
     def get(self, id):
@@ -44,5 +47,5 @@ class BanksList(Resource):
         results = schema.dump(query).data
         return results, 201
 
-api.add_resource(GetBank, '/bank/<int:id>')
-api.add_resource(BanksList, '/banks')
+rest_api.add_resource(GetBank, '/bank/<int:id>')
+rest_api.add_resource(BanksList, '/banks')

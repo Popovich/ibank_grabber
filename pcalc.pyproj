@@ -6,7 +6,7 @@
     <ProjectGuid>015cbb1b-ddbc-4dc7-ae74-cffc1cc009b0</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>run.py</StartupFile>
+    <StartupFile>pcalc\run_dbaas.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,26 +27,37 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="config.py">
+    <Compile Include="pcalc\dbaas_config.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="dbaas\endpoints.py">
+    <Compile Include="pcalc\dbaas\bank\model.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="dbaas\models.py">
+    <Compile Include="pcalc\dbaas\bank\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="dbaas\__init__.py" />
-    <Compile Include="pcalc.py" />
-    <Compile Include="run.py">
+    <Compile Include="pcalc\dbaas\basemodel.py" />
+    <Compile Include="pcalc\dbaas\card\model.py" />
+    <Compile Include="pcalc\dbaas\card\__init__.py" />
+    <Compile Include="pcalc\dbaas\endpoints.py" />
+    <Compile Include="pcalc\dbaas\__init__.py" />
+    <Compile Include="pcalc\run_dbaas.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="__init__.py">
+    <Compile Include="pcalc\ib_grabber\binbank.py" />
+    <Compile Include="pcalc\ib_grabber\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pcalc\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dbaas\" />
+    <Folder Include="pcalc\dbaas\" />
+    <Folder Include="pcalc\dbaas\bank\" />
+    <Folder Include="pcalc\" />
+    <Folder Include="pcalc\dbaas\card\" />
+    <Folder Include="pcalc\ib_grabber\" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
   <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
