@@ -1,4 +1,4 @@
-﻿from dbaas import create_app
+﻿from pcalc.dbaas import create_app
 app = create_app('dbaas_config')
 
 if __name__ == '__main__':

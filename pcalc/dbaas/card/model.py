@@ -1,4 +1,4 @@
-﻿from dbaas.basemodel import db, ma, CRUD
+﻿from pcalc.dbaas.basemodel import db, ma, CRUD
 from sqlalchemy.orm import relationship, backref
 
 class Card(db.Model, CRUD):

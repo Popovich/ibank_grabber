@@ -1,6 +1,6 @@
-﻿from dbaas.basemodel import db
-from dbaas.bank.model import Bank, BankSchema
-from dbaas.card.model import Card, CardSchema
+﻿from pcalc.dbaas.basemodel import db
+from pcalc.dbaas.bank.model import Bank, BankSchema
+from pcalc.dbaas.card.model import Card, CardSchema
 
 from flask_restful import Api, Resource
 from flask import request, jsonify

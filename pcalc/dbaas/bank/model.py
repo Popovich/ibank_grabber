@@ -1,4 +1,4 @@
-from dbaas.basemodel import db, ma, CRUD
+from pcalc.dbaas.basemodel import db, ma, CRUD
 
 class Bank(db.Model, CRUD):
     __tablename__ = 'banks'
