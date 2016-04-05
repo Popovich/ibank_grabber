@@ -30,6 +30,12 @@
     <Compile Include="dbaas_config.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="pcalc\dbaas\account\model.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pcalc\dbaas\account\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pcalc\dbaas\bank\model.py">
       <SubType>Code</SubType>
     </Compile>
@@ -39,7 +45,19 @@
     <Compile Include="pcalc\dbaas\basemodel.py" />
     <Compile Include="pcalc\dbaas\card\model.py" />
     <Compile Include="pcalc\dbaas\card\__init__.py" />
+    <Compile Include="pcalc\dbaas\currency\model.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pcalc\dbaas\currency\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pcalc\dbaas\endpoints.py" />
+    <Compile Include="pcalc\dbaas\transaction\model.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pcalc\dbaas\transaction\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pcalc\dbaas\__init__.py" />
     <Compile Include="run_dbaas.py">
       <SubType>Code</SubType>
@@ -54,9 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="pcalc\dbaas\" />
+    <Folder Include="pcalc\dbaas\account\" />
     <Folder Include="pcalc\dbaas\bank\" />
     <Folder Include="pcalc\" />
     <Folder Include="pcalc\dbaas\card\" />
+    <Folder Include="pcalc\dbaas\currency\" />
+    <Folder Include="pcalc\dbaas\transaction\" />
     <Folder Include="pcalc\ib_grabber\" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />

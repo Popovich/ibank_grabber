@@ -6,7 +6,7 @@ db = SQLAlchemy()
 ma = Marshmallow()
 
 # Class to add, update and delete data via SQLALchemy sessions
-class CRUD():   
+class CRUD():
 
     def add(self, resource):
         db.session.add(resource)
