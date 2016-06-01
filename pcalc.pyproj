@@ -52,6 +52,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="pcalc\dbaas\endpoints.py" />
+    <Compile Include="pcalc\dbaas\models.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pcalc\dbaas\transaction\model.py">
       <SubType>Code</SubType>
     </Compile>

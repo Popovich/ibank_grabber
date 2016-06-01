@@ -1,15 +1,17 @@
 ﻿from pcalc.dbaas.basemodel import db
-from pcalc.dbaas.currency.model import Currency, CurrencySchema
 from pcalc.dbaas.bank.model import Bank, BankSchema
-from pcalc.dbaas.account.model import Account, AccountSchema
-from pcalc.dbaas.card.model import Card, CreditCard, DebitCard, CardSchema
-from pcalc.dbaas.transaction.model import Transaction, TransactionSchema
 
 from flask_restful import Api, Resource
 from flask import request, jsonify
+from flask.ext.restless import APIManager
 
-schema = BankSchema()
-rest_api = Api(prefix='/pcalc/dbaas/v1')
+# Create the Flask-Restless API manager.
+rest_api = APIManager(flask_sqlalchemy_db=db)
+
+rest_api.create_api(Bank, methods=['GET', 'POST', 'DELETE', 'PUT'], primary_key='id')
+
+#schema = BankSchema()
+#rest_api = Api(prefix='/pcalc/dbaas/v1')
 
 class GetBank(Resource):
     def get(self, id):
@@ -50,5 +52,5 @@ class BanksList(Resource):
         results = schema.dump(query).data
         return results, 201
 
-rest_api.add_resource(GetBank, '/bank/<int:id>')
-rest_api.add_resource(BanksList, '/banks')
+#rest_api.add_resource(GetBank, '/bank/<int:id>')
+#rest_api.add_resource(BanksList, '/banks')

@@ -12,11 +12,12 @@ def create_app(config_filename):
     from pcalc.dbaas.basemodel import ma
     ma.init_app(app)
 
-    from pcalc.dbaas.endpoints import rest_api
-    rest_api.init_app(app)
-
     # Create database
+    import pcalc.dbaas.models
     with app.app_context():
         db.create_all()
+
+    from pcalc.dbaas.endpoints import rest_api
+    rest_api.init_app(app)
 
     return app
